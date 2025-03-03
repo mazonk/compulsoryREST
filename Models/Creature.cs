@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace CompulsoryREST.Models;
  
-class Creature {
+public class Creature {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
