@@ -31,7 +31,7 @@ namespace CompulsoryREST.Services{
             .Set("lifespan", creature.Lifespan)
             .Set("size", creature.Size)
             .Set("status", creature.Status)
-            .Set("Description", creature.Description);
+            .Set("description", creature.Description);
         
         await _creaturesCollection.UpdateOneAsync(filter, update);
         return;

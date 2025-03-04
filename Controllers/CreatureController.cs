@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CompulsoryREST.Services;
 using CompulsoryREST.Models;
 
-namespace MongoExample.Controllers;
+namespace CompulsoryREST.Controllers;
 
 [Controller]
 [Route("api/[controller]")]

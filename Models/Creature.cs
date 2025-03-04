@@ -9,31 +9,26 @@ public class Creature {
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
     
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]    
+    [BsonElement("name")]    
     public string? Name { get; set; }
 
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? Species { get; set; }
-
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonElement("location")]
     public string? Location { get; set; }
 
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public int? Lifespan { get; set; } // in years
+        [BsonElement("description")]
+    public string? Description { get; set; }
 
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("lifespan")]
+    public int Lifespan { get; set; } // in years
+
+       [BsonElement("size")]
     public string? Size { get; set; }
 
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonElement("species")]
+    public string? Species { get; set; }
+
+   [BsonElement("status")]
     public string? Status { get; set; }
     
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? Description { get; set; }
+
 }
