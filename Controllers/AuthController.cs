@@ -33,7 +33,7 @@ namespace CompulsoryREST.Controllers
         {
             // Look for a user with matching username and password in the database
             var user = _usersCollection.Find(u => u.Username == request.Username).FirstOrDefault();
-            
+
             if (user == null || user.Password != request.Password)
             {
                 return Unauthorized("Invalid username or password");
@@ -44,6 +44,23 @@ namespace CompulsoryREST.Controllers
             return Ok(new { Token = token });
         }
     }
+
+    [HttpPost("register")]
+        public IActionResult Register([FromBody] LoginRequest request)
+        {
+            // Check if the username already exists
+            var existingUser = _usersCollection.Find(u => u.Username == request.Username).FirstOrDefault();
+            if (existingUser != null)
+            {
+                return BadRequest("Username already taken");
+            }
+
+            // Create a new user and store it in the database
+            var newUser = new User { Username = request.Username, Password = request.Password };
+            _usersCollection.InsertOne(newUser);
+
+            return Ok("User registered successfully");
+        }
 
     public class LoginRequest
     {

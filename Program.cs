@@ -24,6 +24,7 @@ builder.Services.Configure<MongoDBSettings>(options =>
 
 // Add MongoDB service
 builder.Services.AddSingleton<MongoDBService>();
+builder.Services.AddSingleton<JwtService>();
 
 // Add services to the container.
 builder.Services.AddControllers();
