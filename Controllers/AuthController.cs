@@ -43,7 +43,6 @@ namespace CompulsoryREST.Controllers
             var token = _jwtService.GenerateToken(request.Username);
             return Ok(new { Token = token });
         }
-    }
 
     [HttpPost("register")]
         public IActionResult Register([FromBody] LoginRequest request)
@@ -61,6 +60,7 @@ namespace CompulsoryREST.Controllers
 
             return Ok("User registered successfully");
         }
+    }
 
     public class LoginRequest
     {
