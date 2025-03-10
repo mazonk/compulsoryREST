@@ -13,9 +13,9 @@ namespace CompulsoryREST.Services
 
         public JwtService()
         {
-             _secretKey = Environment.GetEnvironmentVariable("JWT_SECRET_KEY");
-            _issuer = Environment.GetEnvironmentVariable("JWT_ISSUER");
-            _audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE");
+             _secretKey = Environment.GetEnvironmentVariable("JWT_SECRET_KEY")!;
+            _issuer = Environment.GetEnvironmentVariable("JWT_ISSUER")!;
+            _audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")!;
         }
 
         public string GenerateToken(string username)
