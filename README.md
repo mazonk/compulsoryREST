@@ -22,3 +22,4 @@ dotnet restore
 ```sh
 dotnet run
 ```
+- you can find the app running on: *http://localhost:5208*
