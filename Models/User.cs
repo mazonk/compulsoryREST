@@ -7,9 +7,9 @@ namespace CompulsoryREST.Models;
      [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
 
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         [BsonElement("Username")]
-        public string Username { get; set; }
+        public string?  Username { get; set; } = string.Empty;
          [BsonElement("Password")]
-        public string Password { get; set; }
+        public string? Password { get; set; } = string.Empty;
     }

@@ -17,12 +17,22 @@ public class CreatureController : Controller
         _mongoDBService = mongoDBService;
     }
 
+/// <summary>
+    /// Retrieves all creatures from the database.
+    /// </summary>
+    /// <returns>The list of creatures.</returns>
+    /// 
     [HttpGet]
     public async Task<List<Creature>> Get()
     {
         return await _mongoDBService.GetAsync();
     }
 
+/// <summary>
+    /// Creates a new creature in the database.
+    /// </summary>
+    /// <returns>The created creature.</returns>
+    /// 
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Creature creature)
@@ -31,7 +41,13 @@ public class CreatureController : Controller
         return CreatedAtAction(nameof(Get), new { id = creature.Id }, creature);
     }
 
-
+/// <summary>
+    /// Updates an existing creature in the database.
+    /// </summary>
+    /// <param name="id">The id of the creature to update.</param>
+    /// <param name="creature"></param>
+    /// <returns>The updated creature.</returns>
+    /// 
     [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(string id, [FromBody] Creature creature)
@@ -40,6 +56,11 @@ public class CreatureController : Controller
         return NoContent();
     }
 
+/// <summary>
+    /// Deletes a creature from the database.
+    /// </summary>
+    /// <returns>The deleted creature.</returns>
+    /// 
     [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)

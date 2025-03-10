@@ -4,6 +4,7 @@ using CompulsoryREST.Models;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CompulsoryREST.Controllers
 {
@@ -27,7 +28,11 @@ namespace CompulsoryREST.Controllers
             // Assuming there's a 'users' collection where the usernames and passwords are stored
             _usersCollection = database.GetCollection<User>("users");
         }
-
+/// <summary>
+/// Log in with an existing user.
+/// </summary>
+/// <param name="request"></param>
+/// <returns>You have logged in.</returns>
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
@@ -43,7 +48,11 @@ namespace CompulsoryREST.Controllers
             var token = _jwtService.GenerateToken(request.Username);
             return Ok(new { Token = token });
         }
-
+/// <summary>
+/// Registers a new user.
+/// </summary>
+/// <param name="request"></param>
+/// <returns>A user has been created.</returns>
     [HttpPost("register")]
         public IActionResult Register([FromBody] LoginRequest request)
         {
@@ -60,8 +69,7 @@ namespace CompulsoryREST.Controllers
 
             return Ok("User registered successfully");
         }
-    }
-
+   }
     public class LoginRequest
     {
         public string Username { get; set; }
